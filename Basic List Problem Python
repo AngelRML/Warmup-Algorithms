@@ -1,0 +1,58 @@
+'''
+Given the names and grades for each student in a class of  students, store them in a nested list and print the name(s) of any student(s) having the second lowest grade.
+
+Note: If there are multiple students with the second lowest grade, order their names alphabetically and print each name on a new line.
+
+Sample Input 0
+
+5
+Harry
+37.21
+Berry
+37.21
+Tina
+37.2
+Akriti
+41
+Harsh
+39
+
+Sample Output 0
+
+Berry
+Harry
+'''
+
+if __name__ == '__main__':
+    arrNames    = []
+    arrScores   = []
+    arrIndex    = []
+    for _ in range(int(input())):
+        arrNames.append(input())
+        arrScores.append(float(input()))
+        
+    nMin    = min(arrScores)
+    nSecond = max(arrScores)
+
+    for index, x in enumerate(arrScores):
+        if x > nMin and x < nSecond:
+            arrIndex.clear()
+            arrIndex.append(index)
+            nSecond = x
+        elif x == nSecond:
+            arrIndex.append(index)
+            
+    #print(arrIndex)
+
+    if len(arrIndex) > 1:
+        arrLowest   = []
+        for x in arrIndex:
+            arrLowest.append(arrNames[x])
+        arrLowest.sort()
+        
+        for x in arrLowest:
+            print(x)
+    else:
+        print(arrNames[arrIndex[0]])
+        
+        
